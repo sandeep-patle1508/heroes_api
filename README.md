@@ -1,24 +1,36 @@
-# README
+# Hero Data API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple web application that provides information about Overwatch heroes and their abilities according to the JSONAPI (http://jsonapi.org) spec.
 
-Things you may want to cover:
+We are using https://overwatch-api.net/ API to fetch hero and ability data.
 
-* Ruby version
+Available End Points -
+- http:///api/heros - hero list
+- /api/heros/{hero_id} - hero data
+- /api/heros/{hero_id}/abilities - hero ability list
+- /api/abilities/ - ability list
+- /api/abilities/{ability_id} - ability data
 
-* System dependencies
+## Tools
+* Ruby 2.5.1p57
+* Rails 2.5.1
+* HTTParty Gem
+* Rspec
+* webmock
 
-* Configuration
+## Installation
+`docker-compose build`
 
-* Database creation
+## Run locally
+Start webserver -
+`docker-compose up`
+Now you can access API via localhost:3000
 
-* Database initialization
+You can run docker container in background -
+`docker-compose up -d`
 
-* How to run the test suite
+Shut down webserver -
+`docker-compose down`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Run Testcases
+`docker-compose run web rspec`

@@ -4,17 +4,21 @@ class Ability
   def initialize(data_hash)
     @id = data_hash['id']
     @name = data_hash['name']
-    @real_name = data_hash['description']
-    @health = data_hash['is_ultimate']
+    @description = data_hash['description']
+    @is_ultimate = data_hash['is_ultimate']
   end
 
-  def self.find(id)
-    api_response = OverwatchApi::Client.new.ability(id)
-    new(api_response)
-  end
-
+  # call Overwatch abilities API to get list of abilities
+  # return: Array of Ability objects
   def self.all
     api_response = OverwatchApi::Client.new.abilities
     api_response[:data].map { |data| new(data) }
+  end
+  
+  # call Overwatch ability API with given ID
+  # return: Ability object
+  def self.find(id)
+    api_response = OverwatchApi::Client.new.ability(id)
+    new(api_response)
   end
 end
