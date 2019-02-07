@@ -1,1 +1,1 @@
-{"name": "test", "id": 1, "data": [{"id": "1", "name": "test", "real_name": "real_name", "health":"health", "armour": "armour", "shield": "shield"}]}
+{"total": 1, "data": [{"id": "1", "name": "test", "real_name": "real_name", "health":"health", "armour": "armour", "shield": "shield"}]}

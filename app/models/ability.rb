@@ -1,4 +1,4 @@
-class Ability
+class Ability < BaseModel
   attr_accessor :id, :name, :description, :is_ultimate
 
   def initialize(data_hash)
@@ -12,13 +12,15 @@ class Ability
   # return: Array of Ability objects
   def self.all
     api_response = OverwatchApi::Client.new.abilities
-    api_response[:data].map { |data| new(data) }
+    if is_success_response?(api_response)
+      api_response['data'] ? api_response['data'].map { |data| new(data) } : []
+    end
   end
   
   # call Overwatch ability API with given ID
   # return: Ability object
   def self.find(id)
     api_response = OverwatchApi::Client.new.ability(id)
-    new(api_response)
+    new(api_response) if is_success_response?(api_response)
   end
 end
